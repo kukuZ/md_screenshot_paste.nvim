@@ -51,8 +51,13 @@ class ScreenshotPastePlugin(object):
         w_name = os.path.join(new_dire, img_name)
         if pf_type == "Windows" or pf_type == "Darwin":
             clipboard_image.save(w_name, optimize=True, quality=20)
+            # md用のタグをh返却
+            w_name = f_name + "//img//" + img_name)
+            self.nvim.current.line = "![alt text]({})".format(w_name)
         else:
             image.save(w_name)
+            # md用のタグをh返却
+            w_name = os.path.join("./", f_name, "img", img_name)
+            self.nvim.current.line = "![alt text]({})".format(w_name)
 
-        # md用のタグをh返却
-        self.nvim.current.line = "![alt text]({})".format(w_name)
+
