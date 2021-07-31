@@ -55,5 +55,5 @@ class ScreenshotPastePlugin(object):
             image.save(w_name)
 
         # md用のタグをh返却
-        w_name = os.path.join("./", "f_name", "img", img_name)
+        w_name = os.path.join("./", f_name, "img", img_name)
         self.nvim.current.line = "![alt text]({})".format(w_name)
