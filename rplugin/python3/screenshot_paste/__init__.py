@@ -47,13 +47,11 @@ class ScreenshotPastePlugin(object):
         else:
             new_dire = os.path.join(new_dire, "img")
         # img保存
+        img_name = str(datetime.datetime.now().strftime("%Y%m%d_%H%M%S")) + ".png"
+        w_name = os.path.join(new_dire, img_name)
         if pf_type == "Windows" or pf_type == "Darwin":
-            img_name = str(datetime.datetime.now().strftime("%Y%m%d_%H%M%S")) + ".jpg"
-            w_name = os.path.join(new_dire, img_name)
             clipboard_image.save(w_name, optimize=True, quality=20)
         else:
-            img_name = str(datetime.datetime.now().strftime("%Y%m%d_%H%M%S")) + ".png"
-            w_name = os.path.join(new_dire, img_name)
             image.save(w_name)
 
         # md用のタグをh返却
